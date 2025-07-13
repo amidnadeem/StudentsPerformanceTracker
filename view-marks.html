@@ -1,0 +1,164 @@
+<!-- view-marks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>View Marks | Student Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+<nav class="navbar">
+  <div class="nav-content">
+    <span class="logo">📘 Student Tracker</span>
+    <div class="nav-links" id="nav-links"></div>
+    <button class="nav-toggle" id="menuBtn" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+  </div>
+  <div class="nav-overlay" id="navOverlay"></div>
+</nav>
+
+
+
+
+
+<div class="container animate__animated animate__fadeIn">
+  <h2 id="heading">View Marks</h2>
+
+  <!-- Subject filters -->
+  <label for="lineSubject">Subject Performance Over Time:</label>
+  <!-- <select id="lineSubject">
+    <option value="all">All</option>
+    <option value="DSA">DSA</option>
+    <option value="OOP">OOP</option>
+    <option value="DB">DB</option>
+    <option value="Calculus">Calculus</option>
+  </select> -->
+
+  <label for="subjectFilter">Filter Table by Subject:</label>
+  <select id="subjectFilter">
+    <option value="all">All</option>
+    <option value="DSA">DSA</option>
+    <option value="OOP">OOP</option>
+    <option value="DB">DB</option>
+    <option value="Calculus">Calculus</option>
+  </select>
+
+  <!-- Student table -->
+  <div id="studentTableContainer" style="overflow-x:auto; width:100%; margin-bottom: 20px;">
+    <table id="studentMarksTable" style="width: 100%; border-collapse: collapse; margin-top: 20px; display: none;">
+      <thead>
+        <tr>
+          <th>Subject</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Teacher table -->
+  <div style="overflow-x:auto; width:100%;">
+    <table id="marksTable" style="display: none; width: 100%; border-collapse: collapse; margin-top: 20px;">
+      <thead>
+        <tr>
+          <th>Student Email</th>
+          <th>Subject</th>
+          <th>Score</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <!-- Charts -->
+  <canvas id="marksChart" style="display: none; max-width: 100%;"></canvas>
+  <canvas id="lineChart" style="display: none; max-width: 100%; margin-top: 30px;"></canvas>
+
+  <button id="downloadBtn">Download PDF</button>
+  <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+</div>
+
+<!-- Libraries -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script type="module" src="js/chart.js"></script>
+
+<!-- <script>
+  // Responsive sidebar menu logic
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('nav-links');
+  const navOverlay = document.getElementById('navOverlay');
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('nav-open');
+    menuBtn.classList.toggle('open');
+    navOverlay.classList.toggle('active');
+  });
+  navOverlay.addEventListener('click', () => {
+    navLinks.classList.remove('nav-open');
+    menuBtn.classList.remove('open');
+    navOverlay.classList.remove('active');
+  });
+
+  // Dynamic navbar population
+  import { auth, db } from './js/firebase-config.js';
+  import { onAuthStateChanged, signOut } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js';
+  import { doc, getDoc } from 'https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js';
+
+  onAuthStateChanged(auth, async (user) => {
+    if (!user) return;
+    const userRef = doc(db, 'users', user.uid);
+    const userSnap = await getDoc(userRef);
+    const data = userSnap.data();
+    if (data.role === 'teacher') {
+      navLinks.innerHTML = `
+        <button onclick="location.href='dashboard.html'">Dashboard</button>
+        <button onclick="location.href='add-marks.html'">Add Marks</button>
+        <button onclick="location.href='view-marks.html'">View Marks</button>
+        <button onclick="location.href='students.html'">All Students</button>
+        <button onclick="logout()">Logout</button>
+      `;
+    } else if (data.role === 'student') {
+      navLinks.innerHTML = `
+        <button onclick="location.href='dashboard.html'">Dashboard</button>
+        <button onclick="location.href='view-marks.html'">View Marks</button>
+        <button onclick="logout()">Logout</button>
+      `;
+    }
+  });
+
+  window.logout = function () {
+    import('https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js').then(({ signOut }) => {
+      import('./js/firebase-config.js').then(({ auth }) => {
+        signOut(auth).then(() => {
+          window.location.href = 'index.html';
+        });
+      });
+    });
+  };
+</script> -->
+
+<script>
+    // Responsive sidebar menu logic
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('nav-open');
+      menuBtn.classList.toggle('open');
+      navOverlay.classList.toggle('active');
+    });
+    navOverlay.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+      menuBtn.classList.remove('open');
+      navOverlay.classList.remove('active');
+    });
+
+  </script>
+</body>
+</html>
+
+

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>All Students | Student Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+  <div class="nav-content">
+    <span class="logo">📘 Student Tracker</span>
+    <div class="nav-links" id="nav-links"></div>
+    <button class="nav-toggle" id="menuBtn" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+  </div>
+  <div class="nav-overlay" id="navOverlay"></div>
+</nav>
+
+
+  <div class="container">
+    <h2>All Students Overview</h2>
+    <div style="overflow-x:auto; width:100%;">
+      <table id="studentsTable" style="width:100%; min-width:600px; border-collapse:collapse;">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Total Marks</th>
+          <th>Average Score</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+  </div>
+
+  <script type="module" src="js/students.js"></script>
+  
+  <script>
+    // Responsive sidebar menu logic
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('nav-open');
+      menuBtn.classList.toggle('open');
+      navOverlay.classList.toggle('active');
+    });
+    navOverlay.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+      menuBtn.classList.remove('open');
+      navOverlay.classList.remove('active');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!-- add-marks.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Add Marks | Student Tracker</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <nav class="navbar">
+  <div class="nav-content">
+    <span class="logo">📘 Student Tracker</span>
+    <div class="nav-links" id="nav-links"></div>
+    <button class="nav-toggle" id="menuBtn" aria-label="Toggle navigation">
+      <span class="hamburger"></span>
+    </button>
+  </div>
+  <div class="nav-overlay" id="navOverlay"></div>
+</nav>
+
+<div class="container animate__animated animate__fadeIn">
+    <h2>Add Student Marks</h2>
+
+    <form id="marks-form">
+      <input type="text" id="studentEmail" placeholder="Student Email" required />
+      <input type="text" id="subject" placeholder="Subject" required />
+      <input type="number" id="score" placeholder="Score (0-100)" required min="0" max="100"/>
+      <button type="submit">Add Mark</button>
+    </form>
+
+    <p id="status" style="color: green;"></p>
+    <button onclick="window.location.href='dashboard.html'">Back to Dashboard</button>
+  </div>
+
+  <script type="module" src="js/marks.js"></script>
+  <script>
+    // Responsive sidebar menu logic
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('nav-links');
+    const navOverlay = document.getElementById('navOverlay');
+    menuBtn.addEventListener('click', () => {
+      navLinks.classList.toggle('nav-open');
+      menuBtn.classList.toggle('open');
+      navOverlay.classList.toggle('active');
+    });
+    navOverlay.addEventListener('click', () => {
+      navLinks.classList.remove('nav-open');
+      menuBtn.classList.remove('open');
+      navOverlay.classList.remove('active');
+    });
+  </script>
+</body>
+</html>
